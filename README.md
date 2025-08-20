@@ -20,7 +20,7 @@ It provides a programming interface and makes it easier to run the results brows
 Instructions for installation can be found on the [Rstudio website](https://rstudio.com/).
 
 #### Install and Start the App
-First, download the latest version of the app directly from the [GitHub repository](https://github.com/dmattek/shiny-timecourse-inspector)(green button *Clone or download*, download as zip). 
+First, download the latest version of the app directly from here (green button *<>Code*, download as zip). 
 Unzip the folder and place it in your favorite location.
 
 If you have installed RStudio, launch it and go to *File -> Open Project*. In the contextual menu navigate to the location where you placed the app and open the file `traversata-app.Rproj`. 
