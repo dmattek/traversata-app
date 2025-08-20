@@ -12,6 +12,7 @@ library(shiny)
 library(data.table)
 library(ggplot2)
 library(ggthemes)
+library(viridis)
 
 # Define server logic required to draw a histogram
 function(input, output, session) {
@@ -220,14 +221,21 @@ function(input, output, session) {
     loc_stats_me <- get_me_stats()
     loc_stats_race <- get_race_stats()
 
+    # For coloured histogram, from:
+    # https://stackoverflow.com/a/44591045/1898713
+    binwidth <- 300 #seconds
+    n_bins <- length(ggplot2:::bin_breaks_width(range(loc_dat_all[["TEMPO"]]), 
+                                                width = binwidth)$breaks) - 1L
+    
     ggplot(loc_dat_all,
            aes(x = TEMPO)) +
-      geom_histogram(binwidth = 300,
+      geom_histogram(binwidth = binwidth,
                      color = 'grey50',
-                     fill = 'grey90') +
+                     fill = viridis::viridis_pal()(n_bins)) +
       geom_vline(xintercept = loc_stats_me$tempo,
                  linetype = "dashed",
-                 color = "#FF5555") +
+                 color = "#FF5555",
+                 linewidth = 1) +
       labs(title = sprintf("Traversata del Lago di Lugano 2025 with %d swimmers", 
                            nrow(loc_dat_all)),
            subtitle = sprintf("Time distribution: min=%s, max=%s, median=%s [h:m:s]",  
@@ -254,10 +262,12 @@ function(input, output, session) {
       geom_step() +
       geom_vline(xintercept = loc_me_stats$rank,
                  linetype = "dashed",
-                 color = "#FF5555") +
+                 color = "#FF5555",
+                 linewidth = 1) +
       geom_hline(yintercept = loc_me_stats$tempo,
                  linetype = "dashed",
-                 color = "#FF5555") +
+                 color = "#FF5555",
+                 linewidth = 1) +
       geom_point(data = data.frame(RANK = loc_me_stats$rank,
                                    TEMPO = loc_me_stats$tempo),
                  aes(x = RANK,
