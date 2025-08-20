@@ -36,7 +36,7 @@ fluidPage(theme = shinytheme("superhero"),
                 "Your stats",
                 
                 h4('Race time vs. age'),
-                p("The results come from ",
+                p("The anonymised results come from the ",
                   a("official records", 
                     href = "https://www.endu.net/it/events/traversata-lago-lugano/results",
                     title ="External link",
@@ -69,6 +69,24 @@ fluidPage(theme = shinytheme("superhero"),
                 br(),
                 p("Distribution of participants' ranks. The dashed vertical line indicates your result."),
                 plotOutput("rankDistPlot"),                
+              ),
+              
+              tabPanel(
+                "About",
+                
+                h4('App Info'),
+                p("This is an R shiny app created by ",
+                  a("Maciej Dobrzyński", 
+                    href = "https:/macdobry.net",
+                    title ="External link",
+                    target = "_blank"),
+                  "."),
+                  p("Download the source code from ",
+                  a("GitHub", 
+                    href = "https://github.com/dmattek/traversata-app",
+                    title ="External link",
+                    target = "_blank"),
+                  "."),
               )
             ),
         )
