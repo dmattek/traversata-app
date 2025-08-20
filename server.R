@@ -7,6 +7,7 @@
 #    https://shiny.posit.co/
 #
 
+library(R.utils)
 library(shiny)
 library(data.table)
 library(ggplot2)
@@ -223,10 +224,10 @@ function(input, output, session) {
            aes(x = TEMPO)) +
       geom_histogram(binwidth = 300,
                      color = 'grey50',
-                     fill = 'grey80') +
+                     fill = 'grey90') +
       geom_vline(xintercept = loc_stats_me$tempo,
                  linetype = "dashed",
-                 color = "#00FFFF") +
+                 color = "#FF5555") +
       labs(title = sprintf("Traversata del Lago di Lugano 2025 with %d swimmers", 
                            nrow(loc_dat_all)),
            subtitle = sprintf("Time distribution: min=%s, max=%s, median=%s [h:m:s]",  
@@ -254,6 +255,17 @@ function(input, output, session) {
       geom_vline(xintercept = loc_me_stats$rank,
                  linetype = "dashed",
                  color = "#FF5555") +
+      geom_hline(yintercept = loc_me_stats$tempo,
+                 linetype = "dashed",
+                 color = "#FF5555") +
+      geom_point(data = data.frame(RANK = loc_me_stats$rank,
+                                   TEMPO = loc_me_stats$tempo),
+                 aes(x = RANK,
+                     y = TEMPO),
+                 size = 4,
+                 stroke = 1,
+                 shape = 1,
+                 color = '#FF5555') +
       labs(title = sprintf("Traversata del Lago di Lugano 2025"),
            subtitle = sprintf("You ranked %d out of %d swimmers with time %s [h:m:s]",  
                               loc_me_stats$rank, 
