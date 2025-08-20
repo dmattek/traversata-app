@@ -22,7 +22,8 @@ fluidPage(theme = shinytheme("superhero"),
         sidebarPanel(
             numericInput("in_my_id", 
                          "Enter your starting number:",
-                         value = 438,
+                         value = 438, 
+                         width = '100px',
                          min = ID_MIN,
                          max = ID_MAX)
         ),
@@ -33,6 +34,16 @@ fluidPage(theme = shinytheme("superhero"),
             tabsetPanel(
               tabPanel(
                 "Your stats",
+                
+                h4('Race time vs. age'),
+                p("The results come from ",
+                  a("official records", 
+                    href = "https://www.endu.net/it/events/traversata-lago-lugano/results",
+                    title ="External link",
+                    target = "_blank"),
+                  "."
+                ),
+                p("Each point corresponds to a single participant. Black horizontal lines indicate median race time within the age group. The dashed horizontal line indicates your race time. "),
                 
                 plotOutput("outPlotRes"),
                 
@@ -47,8 +58,16 @@ fluidPage(theme = shinytheme("superhero"),
               tabPanel(
                 "Race stats",
                 
+                h4('Race statistics'),
+                p("Distribution of participants' age."),
                 plotOutput("ageDistPlot"),
+
+                br(),
+                p("Distribution of race times. The dashed vertical line indicates your result."),
                 plotOutput("timeDistPlot"),
+
+                br(),
+                p("Distribution of participants' ranks. The dashed vertical line indicates your result."),
                 plotOutput("rankDistPlot"),                
               )
             ),
