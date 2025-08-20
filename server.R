@@ -171,7 +171,7 @@ function(input, output, session) {
       scale_color_tableau(palette = 'Tableau 10', name = "Age\ngroup") +
       xlab('Age [years]') +
       ylab("Race time [h:m]") +
-      labs(title = sprintf("Traversata lago di Lugano %d with %d swimmers", 
+      labs(title = sprintf("Traversata del Lago di Lugano %d with %d swimmers", 
                            CURR_YEAR, 
                            nrow(loc_dat_all)),
            subtitle = sprintf("You swam 2.5km in %s; faster than %.1f%% of all swimmers (rank %d); %.1f%% in age group (rank %d)", 
@@ -199,7 +199,7 @@ function(input, output, session) {
                aes(fill = AGE_BIN),
                color = "grey50", ) +
       scale_fill_tableau(palette = 'Tableau 10', name = "Age\ngroup") +
-      labs(title = sprintf("Traversata lago di Lugano 2025 with %d swimmers",
+      labs(title = sprintf("Traversata del Lago di Lugano 2025 with %d swimmers",
                            loc_race_stats$n_part),
            subtitle = sprintf("Age distribution: min=%d, max=%d, median=%d years", 
                               loc_race_stats$age_min, 
@@ -227,7 +227,7 @@ function(input, output, session) {
       geom_vline(xintercept = loc_stats_me$tempo,
                  linetype = "dashed",
                  color = "#00FFFF") +
-      labs(title = sprintf("Traversata lago di Lugano 2025 with %d swimmers", 
+      labs(title = sprintf("Traversata del Lago di Lugano 2025 with %d swimmers", 
                            nrow(loc_dat_all)),
            subtitle = sprintf("Time distribution: min=%s, max=%s, median=%s [h:m:s]",  
                               as.ITime(loc_stats_race$time_min),  
@@ -254,7 +254,7 @@ function(input, output, session) {
       geom_vline(xintercept = loc_me_stats$rank,
                  linetype = "dashed",
                  color = "#FF5555") +
-      labs(title = sprintf("Traversata lago di Lugano 2025"),
+      labs(title = sprintf("Traversata del Lago di Lugano 2025"),
            subtitle = sprintf("You ranked %d out of %d swimmers with time %s [h:m:s]",  
                               loc_me_stats$rank, 
                               nrow(loc_dat_all), 

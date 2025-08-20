@@ -15,7 +15,7 @@ library(shinythemes)
 fluidPage(theme = shinytheme("superhero"),
           
     # Application title
-    titlePanel("Traversata lago di Lugano 2025"),
+    titlePanel("Traversata del Lago di Lugano 2025"),
 
     # Sidebar with a slider input for number of bins
     sidebarLayout(
