@@ -17,7 +17,7 @@ function(input, output, session) {
   
   get_dat_all <- function() {
     # Read the file
-    loc_dat <- fread('data/564476_C3QK433370_ANONYM.csv')
+    loc_dat <- fread('data/564476_C3QK433370_ANONYM.csv.gz')
     
     # Convert string with time to POSIXct format
     loc_dat[,
